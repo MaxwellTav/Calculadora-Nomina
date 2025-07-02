@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_form_calculadora_nomina" model="ir.ui.view">
+        <field name="name">calculadora.nomina.form</field>
+        <field name="model">calculadora.nomina</field>
+        <field name="arch" type="xml">
+            <form string="Calculadora de Nómina">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="cedula"/>
+                        <field name="salario"/>
+                        <field name="fecha_ingreso"/>
+                        <field name="fecha_salida"/>
+                        <field name="tipo_periodo"/>
+                    </group>
+
+                    <group>
+                        <field name="aviso_previo"/>
+                        <field name="incluir_cesantia"/>
+                        <field name="incluir_vacaciones"/>
+                        <field name="incluir_navidad"/>
+                    </group>
+                    
+                    <group>
+                        <field name="dias_laborados" readonly="1"/>
+                        <field name="total_recibir" readonly="1"/>
+                    </group>
+
+                    <group>
+                            <button string="Imprimir PDF" type="object" name="action_imprimir_pdf" class="btn-primary"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_calculadora_nomina" model="ir.actions.act_window">
+        <field name="name">Calculadora de Nómina</field>
+        <field name="res_model">calculadora.nomina</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    
+    <menuitem id="menu_calculadora_root"
+              name="Calculadora de Nómina"
+              sequence="10"
+              parent=""/> 
+
+</odoo>

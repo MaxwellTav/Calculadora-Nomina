@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="reporte_calculadora_nomina">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Resumen de Nómina</h2>
+
+                    <p><strong>Nombre:</strong> <t t-esc="doc.name"/></p>
+                    <p><strong>Cédula:</strong> <t t-esc="doc.cedula"/></p>
+                    <p><strong>Días Trabajados:</strong> <t t-esc="doc.dias_laborados"/></p>
+                    <p><strong>Total a Recibir:</strong> RD$ <t t-esc="doc.total_recibir"/></p>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <report
+    id="reporte_calculadora_nomina"
+    model="calculadora.nomina"
+    string="Resumen de Nómina"
+    report_type="qweb-pdf"
+    name="calculadora_nomina.reporte_calculadora_nomina"
+    file="calculadora_nomina.reporte_calculadora_nomina"
+    print_report_name="'Nómina - %s' % (object.name)"/>
+</odoo>
